@@ -1,42 +1,143 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'underscore-db' ]
 2 info using npm@3.3.6
 3 info using node@v5.0.0
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info lifecycle backend-data@1.0.0~prestart: backend-data@1.0.0
-6 silly lifecycle backend-data@1.0.0~prestart: no script for prestart, continuing
-7 info lifecycle backend-data@1.0.0~start: backend-data@1.0.0
-8 verbose lifecycle backend-data@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle backend-data@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/zyg/Project/backend-data/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/zyg/Tools/go/bin:/home/zyg/Tools/go/bin
-10 verbose lifecycle backend-data@1.0.0~start: CWD: /home/zyg/Project/backend-data
-11 silly lifecycle backend-data@1.0.0~start: Args: [ '-c', 'babel-node server.js' ]
-12 silly lifecycle backend-data@1.0.0~start: Returned: code: 1  signal: null
-13 info lifecycle backend-data@1.0.0~start: Failed to exec start script
-14 verbose stack Error: backend-data@1.0.0 start: `babel-node server.js`
-14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
-14 verbose stack     at emitTwo (events.js:87:13)
-14 verbose stack     at EventEmitter.emit (events.js:172:7)
-14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-14 verbose stack     at emitTwo (events.js:87:13)
-14 verbose stack     at ChildProcess.emit (events.js:172:7)
-14 verbose stack     at maybeClose (internal/child_process.js:818:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-15 verbose pkgid backend-data@1.0.0
-16 verbose cwd /home/zyg/Project/backend-data
-17 error Linux 3.13.0-85-generic
-18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-19 error node v5.0.0
-20 error npm  v3.3.6
-21 error code ELIFECYCLE
-22 error backend-data@1.0.0 start: `babel-node server.js`
-22 error Exit status 1
-23 error Failed at the backend-data@1.0.0 start script 'babel-node server.js'.
-23 error This is most likely a problem with the backend-data package,
-23 error not with npm itself.
-23 error Tell the author that this fails on your system:
-23 error     babel-node server.js
-23 error You can get their info via:
-23 error     npm owner ls backend-data
-23 error There is likely additional logging output above.
-24 verbose exit [ 1, true ]
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData underscore-db
+8 silly fetchNamedPackageData underscore-db
+9 silly mapToRegistry name underscore-db
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/underscore-db
+13 verbose request uri https://registry.npmjs.org/underscore-db
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 8:24:44 PM
+16 verbose request id 27af6cf54756041e
+17 http request GET https://registry.npmjs.org/underscore-db
+18 http 200 https://registry.npmjs.org/underscore-db
+19 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+19 verbose headers   etag: '"5WYGU29PWPROPCO6YETXIPRT5"',
+19 verbose headers   'content-type': 'application/json',
+19 verbose headers   'cache-control': 'max-age=300',
+19 verbose headers   'content-length': '13433',
+19 verbose headers   'accept-ranges': 'bytes',
+19 verbose headers   date: 'Mon, 09 May 2016 12:24:45 GMT',
+19 verbose headers   via: '1.1 varnish',
+19 verbose headers   age: '0',
+19 verbose headers   connection: 'keep-alive',
+19 verbose headers   'x-served-by': 'cache-nrt6128-NRT',
+19 verbose headers   'x-cache': 'MISS',
+19 verbose headers   'x-cache-hits': '0',
+19 verbose headers   'x-timer': 'S1462796685.113006,VS0,VE191',
+19 verbose headers   vary: 'Accept-Encoding' }
+20 silly get cb [ 200,
+20 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+20 silly get     etag: '"5WYGU29PWPROPCO6YETXIPRT5"',
+20 silly get     'content-type': 'application/json',
+20 silly get     'cache-control': 'max-age=300',
+20 silly get     'content-length': '13433',
+20 silly get     'accept-ranges': 'bytes',
+20 silly get     date: 'Mon, 09 May 2016 12:24:45 GMT',
+20 silly get     via: '1.1 varnish',
+20 silly get     age: '0',
+20 silly get     connection: 'keep-alive',
+20 silly get     'x-served-by': 'cache-nrt6128-NRT',
+20 silly get     'x-cache': 'MISS',
+20 silly get     'x-cache-hits': '0',
+20 silly get     'x-timer': 'S1462796685.113006,VS0,VE191',
+20 silly get     vary: 'Accept-Encoding' } ]
+21 verbose get saving underscore-db to /home/zyg/.npm/registry.npmjs.org/underscore-db/.cache.json
+22 silly install normalizeTree
+23 silly loadCurrentTree Finishing
+24 silly loadIdealTree Starting
+25 silly install loadIdealTree
+26 silly cloneCurrentTree Starting
+27 silly install cloneCurrentTreeToIdealTree
+28 silly cloneCurrentTree Finishing
+29 silly loadShrinkwrap Starting
+30 silly install loadShrinkwrap
+31 silly loadShrinkwrap Finishing
+32 silly loadAllDepsIntoIdealTree Starting
+33 silly install loadAllDepsIntoIdealTree
+34 silly resolveWithNewModule underscore-db@0.10.0 checking installable status
+35 silly cache add args [ 'underscore-db', null ]
+36 verbose cache add spec underscore-db
+37 silly cache add parsed spec Result {
+37 silly cache add   raw: 'underscore-db',
+37 silly cache add   scope: null,
+37 silly cache add   name: 'underscore-db',
+37 silly cache add   rawSpec: '',
+37 silly cache add   spec: '*',
+37 silly cache add   type: 'range' }
+38 silly addNamed underscore-db@*
+39 verbose addNamed "*" is a valid semver range for underscore-db
+40 silly addNameRange { name: 'underscore-db', range: '*', hasData: false }
+41 silly mapToRegistry name underscore-db
+42 silly mapToRegistry using default registry
+43 silly mapToRegistry registry https://registry.npmjs.org/
+44 silly mapToRegistry uri https://registry.npmjs.org/underscore-db
+45 verbose addNameRange registry:https://registry.npmjs.org/underscore-db not in flight; fetching
+46 verbose get https://registry.npmjs.org/underscore-db not expired, no request
+47 silly addNameRange number 2 { name: 'underscore-db', range: '*', hasData: true }
+48 silly addNameRange versions [ 'underscore-db',
+48 silly addNameRange   [ '0.8.0', '0.8.1', '0.9.0', '0.9.1', '0.10.0' ] ]
+49 silly addNamed underscore-db@0.10.0
+50 verbose addNamed "0.10.0" is a plain semver version for underscore-db
+51 silly mapToRegistry name underscore-db
+52 silly mapToRegistry using default registry
+53 silly mapToRegistry registry https://registry.npmjs.org/
+54 silly mapToRegistry uri https://registry.npmjs.org/underscore-db
+55 verbose addRemoteTarball https://registry.npmjs.org/underscore-db/-/underscore-db-0.10.0.tgz not in flight; adding
+56 verbose addRemoteTarball [ 'https://registry.npmjs.org/underscore-db/-/underscore-db-0.10.0.tgz',
+56 verbose addRemoteTarball   'a4bd7f5a9c7f2eec31e4784b402241df36671499' ]
+57 info retry fetch attempt 1 at 8:24:45 PM
+58 info attempt registry request try #1 at 8:24:45 PM
+59 http fetch GET https://registry.npmjs.org/underscore-db/-/underscore-db-0.10.0.tgz
+60 http fetch 200 https://registry.npmjs.org/underscore-db/-/underscore-db-0.10.0.tgz
+61 silly fetchAndShaCheck shasum a4bd7f5a9c7f2eec31e4784b402241df36671499
+62 verbose addTmpTarball /tmp/npm-16546-70369f03/registry.npmjs.org/underscore-db/-/underscore-db-0.10.0.tgz not in flight; adding
+63 verbose addTmpTarball already have metadata; skipping unpack for underscore-db@0.10.0
+64 silly cache afterAdd underscore-db@0.10.0
+65 verbose afterAdd /home/zyg/.npm/underscore-db/0.10.0/package/package.json not in flight; writing
+66 verbose afterAdd /home/zyg/.npm/underscore-db/0.10.0/package/package.json written
+67 silly loadAllDepsIntoIdealTree Finishing
+68 silly idealTree:prePrune /usr/local/lib
+68 silly idealTree:prePrune └── underscore-db@0.10.0
+69 silly loadIdealTree Finishing
+70 silly currentTree /usr/local/lib
+71 silly idealTree /usr/local/lib
+71 silly idealTree └── underscore-db@0.10.0
+72 silly generateActionsToTake Starting
+73 silly install generateActionsToTake
+74 warn checkPermissions Missing write access to /usr/local/lib/node_modules
+75 silly rollbackFailedOptional Starting
+76 silly rollbackFailedOptional Finishing
+77 silly runTopLevelLifecycles Starting
+78 silly runTopLevelLifecycles Finishing
+79 silly install printInstalled
+80 verbose stack Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+80 verbose stack     at Error (native)
+81 verbose cwd /home/zyg/Project/data/backend-data
+82 error Linux 3.13.0-85-generic
+83 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "underscore-db"
+84 error node v5.0.0
+85 error npm  v3.3.6
+86 error path /usr/local/lib/node_modules
+87 error code EACCES
+88 error errno -13
+89 error syscall access
+90 error Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+90 error     at Error (native)
+90 error  { [Error: EACCES: permission denied, access '/usr/local/lib/node_modules']
+90 error   errno: -13,
+90 error   code: 'EACCES',
+90 error   syscall: 'access',
+90 error   path: '/usr/local/lib/node_modules' }
+91 error Please try running this command again as root/Administrator.
+92 verbose exit [ -13, true ]

@@ -1,11 +1,11 @@
 import Mock from 'mockjs'
 import mysql from '../stores/mysql'
+import { setId } from '../stores/jsondb'
 const Random = Mock.Random
- //
+const LEN = 4
+const name = 'team'
 const generateSql = () => {
-  console.log(234234)
   let url = []
-  const LEN = 4
   for (let i = 0; i < LEN; i++) {
     url.push(Random.url())
   }
@@ -27,6 +27,7 @@ const generateSql = () => {
 const exec = async () => {
   const sql = generateSql()
   await mysql.query(sql)
+  setId({ name, id: LEN + 1 })
   return Promise.resolve(true)
 }
 export default exec

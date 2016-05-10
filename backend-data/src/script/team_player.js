@@ -1,7 +1,10 @@
 
 import mysql from '../stores/mysql'
+import { setId } from '../stores/jsondb'
  //
+
 const LEN = 72
+const name = 'teamPlayer'
 const generateSql = () => {
   let command = 'INSERT INTO t_team_player VALUES'
   let _sql = [
@@ -88,6 +91,7 @@ const generateSql = () => {
 const exec = async () => {
   const sql = generateSql()
   await mysql.query(sql)
+  setId({ name, id: LEN + 1 })
   return Promise.resolve(true)
 }
 export default exec

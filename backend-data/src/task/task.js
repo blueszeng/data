@@ -1,8 +1,8 @@
 import corn from 'cron'
-export const createtimerJob = async (command, {second = '*', minute = '*', hour = '*',
+export const createtimerJob = async (command, matchDaySeason = 1, {second = '*', minute = '*', hour = '*',
  day = '*', month = '*', week = '*' } = {}) => {
   const job = new corn.CronJob(`${second} ${minute} ${hour} ${day} ${month} ${week}`, async () => {
-    await command()
+    await command(matchDaySeason)
   }, () => {
     console.log('close job ..')
   }, true, 'America/Los_Angeles')
