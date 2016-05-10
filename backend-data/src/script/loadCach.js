@@ -1,7 +1,8 @@
 // import Mock from 'mockjs'
 import { getTeamPlayerByTeamId } from '../model/player'
 import { now } from './task/date'
-import { catcheStoreHash } from '../model/redis'
+import { catcheStoreHash, getCatche } from '../model/redis'
+import { insertToSql } from './playerscore'
 //  const Random = Mock.Random
 
 let initInfo = {
@@ -40,6 +41,14 @@ const getfootballTeamCatchInfo = (team) => {
 export const setTeamToCatch = async () => {
   const hostCatchInfo = getfootballTeamCatchInfo(initInfo.HostTeam)
   const guestCatchInfo = getfootballTeamCatchInfo(initInfo.GuestTeam)
-  catcheStoreHash(`${initInfo.gameId}-${initInfo.hostTeamId}`, hostCatchInfo)
-  catcheStoreHash(`${initInfo.gameId}-${initInfo.guetsTeamId}`, guestCatchInfo)
+  await catcheStoreHash(`${initInfo.gameId}-${initInfo.hostTeamId}`, hostCatchInfo)
+  await catcheStoreHash(`${initInfo.gameId}-${initInfo.guetsTeamId}`, guestCatchInfo)
+  return Promise.resolve(true)
+}
+export const saveTeamScoreToSql = async () => {
+  const hostTeamScoreList = await getCatche(`${initInfo.gameId}-${initInfo.hostTeamId}`)
+  await insertToSql(hostTeamScoreList, initInfo.gameId)
+  const guetsteamScoreList = await getCatche(`${initInfo.gameId}-${initInfo.guetsTeamId}`)
+  await insertToSql(guetsteamScoreList, initInfo.gameId)
+  return Promise.resolve(true)
 }

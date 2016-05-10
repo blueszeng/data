@@ -3,6 +3,7 @@ import mysql from '../stores/mysql'
 import { getId, setId } from '../stores/jsondb'
 import { now } from './task/date'
 import { matchDayTime } from './config/config'
+import { startGame } from '../game/game'
 const Random = Mock.Random
  //
 const LEN = 1
@@ -37,13 +38,23 @@ const generateSql = (matchDaySeason) => {
   for (let i = 0; i < LEN; i++) {
     sql += _sql[i]
   }
-  console.log(sql)
-  return sql
+  return {
+    sql,
+    startinfo: {
+      gameId: Game.id,
+      hostTeamId: Game.hostTeamId,
+      guetsTeamId: Game.guestTeamId
+    }
+  }
 }
 const exec = async (matchDaySeason) => {
-  const sql = generateSql(matchDaySeason)
+  let sql = generateSql(matchDaySeason)
+  const startinfo = sql.startinfo
+  sql = sql.sql
   await mysql.query(sql)
   setId({name, id: getId(name) + 1})
+  startGame(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId)
   return Promise.resolve(true)
 }
+
 export default exec
