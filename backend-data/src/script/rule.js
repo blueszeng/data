@@ -6,8 +6,9 @@ const name = 'rule'
 const generateSql = () => {
   let command = 'INSERT INTO t_rule VALUES'
   let _sql = [
-    "(1, '前三有', ''),",
-    "(1, '50%有', '')"
+    "(1, '第一名', '第一名有奖'),",
+    "(2, '前三名', '前三名有奖')，",
+    "(3, '前50％', '前50％有奖')"
   ]
   let sql = command
   for (let i = 0; i < LEN; i++) {

@@ -22,6 +22,14 @@ export const getId = (name) => {
   return 1
 }
 
+export const getName = (name) => {
+  const idObject = db('table_id').find({name})
+  if (idObject && idObject['id']) {
+    return idObject['name']
+  }
+  return null
+}
+
 export const setMatchDayId = ({name, matchdayId}) => {
   const isExistsDb = db('table_id')
       .chain()

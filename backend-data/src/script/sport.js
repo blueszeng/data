@@ -6,7 +6,7 @@ const name = 'sport'
 const generateSql = () => {
   let command = 'INSERT INTO t_sport VALUES'
   let _sql = [
-    "(1, '足球')",
+    "(1, '足球'),",
     "(2, '篮球')"
   ]
   let sql = command

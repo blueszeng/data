@@ -4,11 +4,11 @@ import { setId } from '../stores/jsondb'
 const LEN = 4
 const name = 'postion'
 const generateSql = () => {
-  let command = 'INSERT INTO t_team VALUES'
+  let command = 'INSERT INTO t_position VALUES'
   let _sql = [
-    "(1, '门将')",
-    "(2, '前锋')",
-    "(3, '中场')",
+    "(1, '门将'),",
+    "(2, '前锋'),",
+    "(3, '中场'),",
     "(4, '后卫')"
   ]
 

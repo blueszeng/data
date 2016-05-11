@@ -1,13 +1,36 @@
 {
-  "posts": [
-    {
-      "title": "hi!"
-    }
-  ],
   "table_id": [
     {
+      "name": "team",
+      "id": 5
+    },
+    {
+      "name": "player",
+      "id": 73
+    },
+    {
+      "name": "sport",
+      "id": 3
+    },
+    {
+      "name": "postion",
+      "id": 5
+    },
+    {
       "name": "catgory",
-      "id": 11
+      "id": 2
+    },
+    {
+      "name": "matchday",
+      "id": 3
+    },
+    {
+      "name": "game",
+      "id": 85
+    },
+    {
+      "name": "teamPlayer",
+      "id": 73
     }
   ]
 }

@@ -314,7 +314,7 @@ CREATE TABLE `t_users_strategies_wechat` (
 DROP TABLE IF EXISTS `t_position`;
 CREATE TABLE `t_position` (
   `id` int(10) unsigned NOT NULL COMMENT 'position id',
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

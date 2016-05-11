@@ -1,29 +1,39 @@
 import Mock from 'mockjs'
 import mysql from '../stores/mysql'
 import { getId, setId } from '../stores/jsondb'
-import { setTime } from './task/date'
-import { matchDayTime } from './config/config'
+import { setTime } from '../task/date'
+import { matchDayTime } from '../config/config'
 const Random = Mock.Random
  //
 const LEN = 2
 const name = 'matchday'
 const generateSql = () => {
   let _sql = []
-  [0, 1].forEach((id) => {
+  const selectListSub = [0, 1]
+  selectListSub.forEach((id) => {
     const startTime = matchDayTime.startTime[id]
     const betEndTime = matchDayTime.betEndTime[id]
     const MathDay = {
-      id: getId(name),
+      id: getId(name) + id,
       categoryId: Random.integer(1, getId('catgory') - 1),
       startTime: setTime(startTime.hours, startTime.minutes, startTime.second),
       betEndTime: setTime(betEndTime.hours, betEndTime.minutes, betEndTime.second)
     }
-    _sql.push(`(
-       ${MathDay.id},
-       ${MathDay.categoryId},
-       ${Random.pick(MathDay.startTime)},
-       ${Random.pick(MathDay.betEndTime)}
-     )`)
+    if (id === selectListSub[selectListSub.length - 1]) {
+      _sql.push(`(
+         ${MathDay.id},
+         ${MathDay.categoryId},
+         '${Random.pick(MathDay.startTime)}',
+         '${Random.pick(MathDay.betEndTime)}'
+       )`)
+    } else {
+      _sql.push(`(
+          ${MathDay.id},
+          ${MathDay.categoryId},
+          '${Random.pick(MathDay.startTime)}',
+          '${Random.pick(MathDay.betEndTime)}'
+      ),`)
+    }
   })
   let command = 'INSERT INTO t_match_day VALUES'
   let sql = command

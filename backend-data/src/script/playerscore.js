@@ -6,10 +6,10 @@ const putScoreSql = (sql, gameId) => {
   const arrySqlKey = Object.keys(sql)
   for (let key in arrySqlKey) {
     let sqlkey = arrySqlKey[key]
-    if (key !== arrySqlKey.length) {
-      _sql.push(`(${sqlkey},${gameId},${sql[sqlkey]}),`)
+    if (Number(key) + 1 !== arrySqlKey.length) {
+      _sql.push(`(${sqlkey},${gameId},'${sql[sqlkey]}'),`)
     } else {
-      _sql.push(`(${sqlkey},${gameId},${sql[sqlkey]})`)
+      _sql.push(`(${sqlkey},${gameId},'${sql[sqlkey]}')`)
     }
   }
   sql = command
@@ -19,8 +19,11 @@ const putScoreSql = (sql, gameId) => {
   console.log(sql)
   return sql
 }
-export const exec = async (sql, gameId) => {
+const exec = async (sql, gameId) => {
   const _sql = putScoreSql(sql, gameId)
+//  console.log(_sql)
   await mysql.query(_sql)
   return Promise.resolve(true)
 }
+
+export default exec
