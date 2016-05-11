@@ -1,30 +1,30 @@
 import client from '../stores/redis'
 export const catcheStoreHash = async (resultKey, result) => {
+  let hashValue = []
+  Object.keys(result).forEach((value) => {
+    hashValue.push(value)
+    hashValue.push(JSON.stringify(result[value]))
+  })
+
   return new Promise((resolve, reject) => {
-    return Promise.all(Object.keys(result).map((key, i) => {
-      return new Promise((hash_resolve) => {
-        client.hset(resultKey, key, JSON.stringify(result[key]), (err, redis_res) => {
-          return hash_resolve(redis_res)
-          })
-        })
-      })
-    ).then(() => {
-        return resolve(resultKey)
+    client.hmset(resultKey, hashValue, (err, ret) => {
+      if (err) {
+        return reject('err')
+      }
+      return resolve(ret)
     })
   })
 }
 
-
 export const getCatche = async (getKey) => {
   return new Promise((resolve, reject) => {
-    client.hgetall(getKey, (err, redis_ret) => {
+    client.hgetall(getKey, (err, ret) => {
       if (err) {
         return reject('error')
       }
-      if (Object.keys(redis_ret).length > 0) {
-        return resolve(redis_ret)
+      if (Object.keys(ret).length > 0) {
+        return resolve(ret)
       }
-
     })
   })
 }

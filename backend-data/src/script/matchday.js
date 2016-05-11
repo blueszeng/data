@@ -2,17 +2,17 @@ import Mock from 'mockjs'
 import mysql from '../stores/mysql'
 import { getId, setId } from '../stores/jsondb'
 import { setTime } from '../task/date'
-import { matchDayTime } from '../config/config'
+import { gameRunTime, mathDayCrerateNuberList } from '../config/config'
 const Random = Mock.Random
  //
-const LEN = 2
+const LEN = mathDayCrerateNuberList.length
 const name = 'matchday'
 const generateSql = () => {
   let _sql = []
-  const selectListSub = [0, 1]
+  const selectListSub = mathDayCrerateNuberList
   selectListSub.forEach((id) => {
-    const startTime = matchDayTime.startTime[id]
-    const betEndTime = matchDayTime.betEndTime[id]
+    const startTime = gameRunTime.startTime[id]
+    const betEndTime = gameRunTime.betEndTime[id]
     const MathDay = {
       id: getId(name) + id,
       categoryId: Random.integer(1, getId('catgory') - 1),
@@ -46,7 +46,7 @@ const generateSql = () => {
 const exec = async () => {
   const sql = generateSql()
   await mysql.query(sql)
-  setId({name, id: LEN + 1})
+  setId({name, id: getId(name) + LEN})
   return Promise.resolve(true)
 }
 export default exec

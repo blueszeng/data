@@ -2,23 +2,23 @@ import Mock from 'mockjs'
 import mysql from '../stores/mysql'
 import { getId, setId } from '../stores/jsondb'
 import { now, setTime } from '../task/date'
-import { matchDayTime } from '../config/config'
 import { startGame } from '../game/game'
+import { gameRunTime, mathDayCrerateNuberList } from '../config/config'
 const Random = Mock.Random
-const sTime = matchDayTime.startTime
-const eTime = matchDayTime.startTime
+const sTime = gameRunTime.startTime
+const eTime = gameRunTime.startTime
  //
 const LEN = 1
 const name = 'game'
-const generateSql = (matchDaySeason) => {
+const generateSql = (gameIdNumber) => {
   const Game = {
     id: getId(name),
     categoryId: Random.integer(1, getId('catgory') - 1),
-    hostTeamId: Random.integer(1, getId('team') - 1),
-    guestTeamId: Random.integer(3, getId('team') - 1),
-    matchDayId: (getId('matchday') - 3) + matchDaySeason,
+    hostTeamId: Random.integer(1, Math.floor((getId('team') - 1) / 2)),
+    guestTeamId: Random.integer(Math.floor((getId('team') - 1) / 2) + 1, getId('team') - 1),
+    matchDayId: (getId('matchday') - (mathDayCrerateNuberList.length + 1)) + gameIdNumber,
     name: Random.ctitle(3, 10),
-    startTime: setTime(sTime[matchDaySeason - 1].hours, sTime[matchDaySeason - 1].minutes,sTime[matchDaySeason - 1].second),
+    startTime: setTime(sTime[gameIdNumber - 1].hours, sTime[gameIdNumber - 1].minutes, sTime[gameIdNumber - 1].second),
     ext: '',
     createdTime: now(),
     updatedTime: now()
@@ -49,15 +49,14 @@ const generateSql = (matchDaySeason) => {
       gameId: Game.id,
       hostTeamId: Game.hostTeamId,
       guetsTeamId: Game.guestTeamId,
-      betEndTime: eTime[matchDaySeason - 1]
+      betEndTime: eTime[gameIdNumber - 1]
     }
   }
 }
-const exec = async (matchDaySeason) => {
-  let sql = generateSql(matchDaySeason)
+const exec = async (gameIdNumber) => {
+  let sql = generateSql(gameIdNumber)
   const startinfo = sql.startinfo
-  sql = sql.sql
-//  await mysql.query(sql)
+  await mysql.query(sql.sql)
   setId({name, id: getId(name) + 1})
   startGame(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.betEndTime)
   return Promise.resolve(true)

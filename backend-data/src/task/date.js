@@ -2,7 +2,7 @@ const formatDate = (now) => {
   let  year = now.getUTCFullYear()
   let  month = now.getUTCMonth() + 1
   let  date = now.getUTCDate()
-  let  hour = now.getUTCHours()
+  let  hour = now.getHours()
   let  minute = now.getUTCMinutes()
   let  second = now.getUTCSeconds()
   return year + '-' + month + '-' + date +' '+ hour + ':' + minute + ':' + second
@@ -20,5 +20,6 @@ export const setTime = (hours, minutes, second) => {
   date.setHours(hours)
   date.setMinutes(minutes)
   date.setSeconds(second)
+  console.log("aaaaa->",date )
   return formatDate(date)
 }
