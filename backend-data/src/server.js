@@ -30,38 +30,38 @@ const LoadList = {
     { name: 'sport', arg: sport },
     { name: 'postion', arg: postion }
   ],
-  // timer: [
-  //     { name: 'matchday',
-  //       arg: matchday,
-  //       time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes, second: mathDayCrerateTime.startTime[0].second }
-  //     },
-  //     { name: 'game',
-  //       arg: game,
-  //       time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
-  //       gameIdNumber: 1
-  //     },
-  //     { name: 'game',
-  //       arg: game,
-  //       time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
-  //       gameIdNumber: 2
-  //     }
-  // ]
   timer: [
-        { name: 'matchday',
-          arg: matchday,
-          time: { hour: 14, minute: 7, second: 20 }
-        },
-        { name: 'game',
-          arg: game,
-          time: { hour: 14, minute: 7, second: 30 },
-          gameIdNumber: 1
-        },
-        { name: 'game',
-          arg: game,
-          time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
-          gameIdNumber: 2
-        }
+      { name: 'matchday',
+        arg: matchday,
+        time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes, second: mathDayCrerateTime.startTime[0].second }
+      },
+      { name: 'game',
+        arg: game,
+        time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
+        gameIdNumber: 1
+      },
+      { name: 'game',
+        arg: game,
+        time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
+        gameIdNumber: 2
+      }
   ]
+  // timer: [
+  //       { name: 'matchday',
+  //         arg: matchday,
+  //         time: { hour: 14, minute: 7, second: 20 }
+  //       },
+  //       { name: 'game',
+  //         arg: game,
+  //         time: { hour: 14, minute: 7, second: 30 },
+  //         gameIdNumber: 1
+  //       },
+  //       { name: 'game',
+  //         arg: game,
+  //         time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
+  //         gameIdNumber: 2
+  //       }
+  // ]
 }
 LoadList.only.forEach((script) => {
   if (!getName(script.name)) {
