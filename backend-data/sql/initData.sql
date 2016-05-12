@@ -11,3 +11,34 @@ COMMIT;
 BEGIN;
 INSERT INTO `t_common_provinces` VALUES ('1', '北京'), ('2', '天津'), ('3', '河北'), ('4', '山西'), ('5', '内蒙古'), ('6', '辽宁'), ('7', '吉林'), ('8', '黑龙江'), ('9', '上海'), ('10', '江苏'), ('11', '浙江'), ('12', '安徽'), ('13', '福建'), ('14', '江西'), ('15', '山东'), ('16', '河南'), ('17', '湖北'), ('18', '湖南'), ('19', '广东'), ('20', '广西'), ('21', '海南'), ('22', '重庆'), ('23', '四川'), ('24', '贵州'), ('25', '云南'), ('26', '西藏'), ('27', '陕西'), ('28', '甘肃'), ('29', '青海'), ('30', '宁夏'), ('31', '新疆'), ('32', '香港'), ('33', '澳门'), ('34', '台湾');
 COMMIT;
+-- ----------------------------
+--  Records of `t_rule`
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_rule` VALUES(1,'第一名','第一名有奖');
+INSERT INTO `t_rule` VALUES(2,'前三名','前三名有奖');
+INSERT INTO `t_rule` VALUES(3,'前50%','前50%有奖');
+COMMIT;
+-- ----------------------------
+--  Records of `t_rule_price`
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_rule_price` VALUES(1,'1','第一名','第一名有奖','return (alreadyEntry ? alreadyEntry*entryPrice*0.9 : 0)');
+INSERT INTO `t_rule_price` VALUES(2,'2','前三名','前三名有奖','return (alreadyEntry ? alreadyEntry*entryPrice*0.9*0.5 : 0)');
+INSERT INTO `t_rule_price` VALUES(3,'3','前50%','前50%有奖','return (alreadyEntry ? alreadyEntry*entryPrice*0.9/(alreadyEntry/2) : 0)');
+COMMIT;
+
+-- ----------------------------
+--  Records of `t_deerpoints_exchanges`
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_deerpoints_exchanges` VALUES ('1', '500', '5', '0'), ('2', '1000', '10', '0'), ('3', '5000', '50', '0'), ('4', '10000', '100', '0'), ('5', '20000', '200', '1'), ('6', '50000', '500', '0');
+COMMIT;
+
+-- ----------------------------
+--  Records of `t_category`
+-- ----------------------------
+/*BEGIN;
+INSERT INTO `t_category` (`id`,`sportId`,`name`,`durationTime`,`logoUrl`) VALUES (1, 1,'中超','115','');
+INSERT INTO `t_category` (`id`,`sportId`,`name`,`durationTime`,`logoUrl`) VALUES (2, 1,'中甲','115','');
+COMMIT; */
