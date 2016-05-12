@@ -308,15 +308,7 @@ CREATE TABLE `t_users_strategies_wechat` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
---  Table structure for `t_position`
--- ----------------------------
-DROP TABLE IF EXISTS `t_position`;
-CREATE TABLE `t_position` (
-  `id` int(10) unsigned NOT NULL COMMENT 'position id',
-  `name` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 

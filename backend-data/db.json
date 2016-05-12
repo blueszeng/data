@@ -5,6 +5,10 @@
       "id": 5
     },
     {
+      "name": "teamPlayer",
+      "id": 73
+    },
+    {
       "name": "player",
       "id": 73
     },
@@ -18,19 +22,15 @@
     },
     {
       "name": "catgory",
-      "id": 2
+      "id": 3
     },
     {
       "name": "matchday",
-      "id": 79
+      "id": 5
     },
     {
       "name": "game",
-      "id": 128
-    },
-    {
-      "name": "teamPlayer",
-      "id": 73
+      "id": 4
     }
   ]
 }

@@ -12,12 +12,11 @@ const generateSql = () => {
   const selectListSub = mathDayCrerateNuberList
   selectListSub.forEach((id) => {
     const startTime = gameRunTime.startTime[id]
-    const betEndTime = gameRunTime.betEndTime[id]
     const MathDay = {
       id: getId(name) + id,
       categoryId: Random.integer(1, getId('catgory') - 1),
       startTime: setTime(startTime.hours, startTime.minutes, startTime.second),
-      betEndTime: setTime(betEndTime.hours, betEndTime.minutes, betEndTime.second)
+      betEndTime: setTime(startTime.hours + 1, startTime.minutes, startTime.second)
     }
     if (id === selectListSub[selectListSub.length - 1]) {
       _sql.push(`(

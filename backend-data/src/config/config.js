@@ -16,8 +16,8 @@ export const mathDayCrerateTime = {
     }
   ]
 }
-// 一天中创建比赛对应 的启动时间，和结束时间 ，
-// 游戏表中也对应此启动时间。可以做为启动游戏时间 和结束游戏时间
+
+// 游戏开始时间 和游戏结束时间
 export const gameRunTime = {
   startTime: [
     {
@@ -31,15 +31,15 @@ export const gameRunTime = {
       second: 0
     }
   ],
-  betEndTime: [
+  endTime: [
     {
       hours: 14,
-      minutes: 30,
+      minutes: 25,
       second: 0
     },
     {
       hours: 20,
-      minutes: 30,
+      minutes: 25,
       second: 0
     }
   ]

@@ -1,7 +1,8 @@
-// import Mock from 'mockjs'
+import Mock from 'mockjs'
 import { getTeamPlayerByTeamId } from '../model/player'
 import { catcheStoreHash, getCatche } from '../model/redis'
 import insertToSql from './playerscore'
+const Random = Mock.Random
 
 let initInfo = {
   HostTeam: {},
@@ -24,11 +25,12 @@ export const InitCatch = async (gameId, hostTeamId, guetsTeamId) => {
 
 const getfootballTeamCatchInfo = (team) => {
   const _team = {}
-  const footballInfo = {
-    id: 1,
-    contestId: 1
-  }
   for (let i = 0; i < team.length; i++) {
+    const footballInfo = {
+      shooting: Random.integer(1, 100),
+      Penalty: Random.integer(1, 100),
+      heat: Random.integer(1, 100)
+    }
     _team[team[i].playerId] = JSON.stringify(footballInfo)
   }
   return _team

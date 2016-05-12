@@ -6,7 +6,7 @@ import { startGame } from '../game/game'
 import { gameRunTime, mathDayCrerateNuberList } from '../config/config'
 const Random = Mock.Random
 const sTime = gameRunTime.startTime
-const eTime = gameRunTime.startTime
+const eTime = gameRunTime.endTime
  //
 const LEN = 1
 const name = 'game'
@@ -49,7 +49,7 @@ const generateSql = (gameIdNumber) => {
       gameId: Game.id,
       hostTeamId: Game.hostTeamId,
       guetsTeamId: Game.guestTeamId,
-      betEndTime: eTime[gameIdNumber - 1]
+      endTime: eTime[gameIdNumber - 1]
     }
   }
 }
@@ -58,7 +58,7 @@ const exec = async (gameIdNumber) => {
   const startinfo = sql.startinfo
   await mysql.query(sql.sql)
   setId({name, id: getId(name) + 1})
-  startGame(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.betEndTime)
+  startGame(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.endTime)
   return Promise.resolve(true)
 }
 
