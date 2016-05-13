@@ -10,14 +10,14 @@ export const mathDayCrerateNuberList = [
 export const mathDayCrerateTime = {
   startTime: [
     {
-      hours: 11,
+      hours: 9,
       minutes: 30,
       second: 0
     }
   ]
 }
-
-// 游戏开始时间 和游戏结束时间
+// 一天中创建比赛对应 的启动时间，和结束时间 ，
+// 游戏表中也对应此启动时间。可以做为启动游戏时间 和结束游戏时间
 export const gameRunTime = {
   startTime: [
     {

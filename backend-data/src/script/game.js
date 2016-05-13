@@ -17,7 +17,7 @@ const generateSql = (gameIdNumber) => {
     hostTeamId: Random.integer(1, Math.floor((getId('team') - 1) / 2)),
     guestTeamId: Random.integer(Math.floor((getId('team') - 1) / 2) + 1, getId('team') - 1),
     matchDayId: (getId('matchday') - (mathDayCrerateNuberList.length + 1)) + gameIdNumber,
-    name: Random.ctitle(3, 10),
+    name: '半场赛',
     startTime: setTime(sTime[gameIdNumber - 1].hours, sTime[gameIdNumber - 1].minutes, sTime[gameIdNumber - 1].second),
     ext: '',
     createdTime: now(),

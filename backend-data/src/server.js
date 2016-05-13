@@ -42,7 +42,7 @@ const LoadList = {
       },
       { name: 'game',
         arg: game,
-        time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
+        time: { hour: startTimeobj[1].hours, minute: startTimeobj[1].minutes, second: startTimeobj[1].second },
         gameIdNumber: 2
       }
   ]

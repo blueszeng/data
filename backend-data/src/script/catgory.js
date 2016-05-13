@@ -1,15 +1,13 @@
-import Mock from 'mockjs'
 import mysql from '../stores/mysql'
 import { setId } from '../stores/jsondb'
-const Random = Mock.Random
  //
 const LEN = 2
 const name = 'catgory'
 const generateSql = () => {
   let command = 'INSERT INTO t_category VALUES'
   let _sql = [
-    `(1, 1, '中超', 115, 3 ,'${Random.word()}.js',''),`,
-    `(2, 1, '中甲', 115, 3 ,'${Random.word()}.js','')`
+    "(1, 1, '中超', 115, 3 ,'',''),",
+    "(2, 1, '中甲', 115, 3 ,'','')`"
   ]
   let sql = command
   for (let i = 0; i < LEN; i++) {
