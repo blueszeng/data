@@ -70,6 +70,7 @@ LoadList.only.forEach((script) => {
   }
 })
 LoadList.timer.forEach((script) => {
+  console.log(script.time)
   createtimerJob(script.arg, script.time, script.matchDaySeason)
   console.log(`add ${script.name} timer job...`)
 })
