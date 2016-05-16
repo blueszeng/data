@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 import mysql from '../stores/mysql'
 import { getId, setId } from '../stores/jsondb'
 import { now, setTime } from '../task/date'
-import { startGame } from '../game/game'
+import { initGameWaitStart } from '../game/game'
 import { gameRunTime, mathDayCrerateNuberList } from '../config/config'
 const Random = Mock.Random
 const sTime = gameRunTime.startTime
@@ -42,14 +42,16 @@ const generateSql = (gameIdNumber) => {
   for (let i = 0; i < LEN; i++) {
     sql += _sql[i]
   }
-//  console.log(sql)
+  console.log(sql, gameIdNumber)
   return {
     sql,
     startinfo: {
       gameId: Game.id,
       hostTeamId: Game.hostTeamId,
       guetsTeamId: Game.guestTeamId,
-      endTime: eTime[gameIdNumber - 1]
+      endTime: eTime[gameIdNumber - 1],
+      gameIdNumber: gameIdNumber
+
     }
   }
 }
@@ -58,7 +60,7 @@ const exec = async (gameIdNumber) => {
   const startinfo = sql.startinfo
   await mysql.query(sql.sql)
   setId({name, id: getId(name) + 1})
-  startGame(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.endTime)
+  initGameWaitStart(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.endTime, startinfo.gameIdNumber)
   return Promise.resolve(true)
 }
 

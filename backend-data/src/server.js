@@ -19,8 +19,6 @@ import postion from './script/postion'
 // 定时加载的数据
 import matchday from './script/matchday'
 import game from './script/game'
-const startTimeobj = gameRunTime.startTime
-
 const LoadList = {
   only: [
     { name: 'team', arg: team },
@@ -37,12 +35,12 @@ const LoadList = {
       },
       { name: 'game',
         arg: game,
-        time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
+        time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes + 1, second: mathDayCrerateTime.startTime[0].second },
         gameIdNumber: 1
       },
       { name: 'game',
         arg: game,
-        time: { hour: startTimeobj[1].hours, minute: startTimeobj[1].minutes, second: startTimeobj[1].second },
+        time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes + 2, second: mathDayCrerateTime.startTime[0].second },
         gameIdNumber: 2
       }
   ]
@@ -71,7 +69,7 @@ LoadList.only.forEach((script) => {
 })
 LoadList.timer.forEach((script) => {
   console.log(script.time)
-  createtimerJob(script.arg, script.time, script.matchDaySeason)
+  createtimerJob(script.arg, script.time, script.gameIdNumber)
   console.log(`add ${script.name} timer job...`)
 })
 // test data
