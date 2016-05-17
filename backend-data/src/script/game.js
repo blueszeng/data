@@ -10,10 +10,12 @@ const eTime = gameRunTime.endTime
  //
 const LEN = 1
 const name = 'game'
+// const catgoryLen = mathDayCrerateNuberList
 const generateSql = (gameIdNumber) => {
+  // getId('catgory') + catgoryLen - gameIdNumber - 1,
   const Game = {
     id: getId(name),
-    categoryId: Random.integer(1, getId('catgory') - 1),
+    categoryId: 1,
     hostTeamId: Random.integer(1, Math.floor((getId('team') - 1) / 2)),
     guestTeamId: Random.integer(Math.floor((getId('team') - 1) / 2) + 1, getId('team') - 1),
     matchDayId: (getId('matchday') - (mathDayCrerateNuberList.length + 1)) + gameIdNumber,

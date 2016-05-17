@@ -6,7 +6,7 @@
 // week: 0-6
 import { createonlyJob, createtimerJob } from './task/task'
 import { getName } from './stores/jsondb'
-import { gameRunTime, mathDayCrerateTime } from './config/config'
+import { mathDayCrerateTime } from './config/config'
 
 // 仅加载一次的数据
 import team from './script/team'

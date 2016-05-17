@@ -12,9 +12,10 @@ const generateSql = () => {
   const selectListSub = mathDayCrerateNuberList
   selectListSub.forEach((id) => {
     const startTime = gameRunTime.startTime[id]
+    // Random.integer(1, getId('catgory') - 1),
     const MathDay = {
       id: getId(name) + id,
-      categoryId: Random.integer(1, getId('catgory') - 1),
+      categoryId: 1,
       startTime: setTime(startTime.hours, startTime.minutes, startTime.second),
       betEndTime: setTime(startTime.hours + 1, startTime.minutes, startTime.second)
     }
