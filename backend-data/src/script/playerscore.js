@@ -21,7 +21,6 @@ const putScoreSql = (sql, gameId) => {
 }
 const exec = async (sql, gameId) => {
   const _sql = putScoreSql(sql, gameId)
-//  console.log(_sql)
   await mysql.query(_sql)
   return Promise.resolve(true)
 }

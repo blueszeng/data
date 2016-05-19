@@ -22,6 +22,32 @@ export const getId = (name) => {
   return 1
 }
 
+export const setMatchDayLen = ({name, len}) => {
+  const isExistsDb = db('table_id')
+      .chain()
+      .find({name})
+  if (isExistsDb.value()) {
+    return isExistsDb.assign({name, len})
+      .value()
+  }
+  db('table_id').push({name, len})
+}
+
+export const getMatchDayLen = (name) => {
+  const idObject = db('table_id').find({name})
+  if (idObject && idObject['len']) {
+    return idObject['len']
+  }
+  return 0
+}
+
+
+
+
+
+
+
+
 export const getName = (name) => {
   const idObject = db('table_id').find({name})
   if (idObject && idObject['id']) {

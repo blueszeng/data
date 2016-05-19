@@ -2,6 +2,13 @@ import { createtimerJob, createonlyJob } from '../task/task'
 import { InitCatch, setTeamToCatch, saveTeamScoreToSql } from '../script/loadCatch'
 import { gameRunTime } from '../config/config'
 const startTimeobj = gameRunTime.startTime
+
+
+export const initGameWaitStart = async (gameId, hostTeamId, guetsTeamId, endTime, gameIdNumber) => {
+
+
+}
+
 export const initGameWaitStart = async (gameId, hostTeamId, guetsTeamId, endTime, gameIdNumber) => {
   await InitCatch(gameId, hostTeamId, guetsTeamId)
   createonlyJob(

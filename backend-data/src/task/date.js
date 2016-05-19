@@ -8,15 +8,19 @@ const formatDate = (now) => {
   return year + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second
 }
 
-export const now = () => {
+export const now = (dateString) => {
+  if (dateString) {
+    return formatDate(new Date(dateString))
+  }
   return formatDate(new Date())
 }
 export const nowAddtime = (minutes) => {
   const timestamp = minutes * 60 * 1000
   return formatDate(new Date(Date.now() + timestamp))
 }
-export const setTime = (hours, minutes, second) => {
+export const setTime = (day, hours, minutes, second) => {
   const date = new Date()
+  date.setHours(day)
   date.setHours(hours)
   date.setMinutes(minutes)
   date.setSeconds(second)

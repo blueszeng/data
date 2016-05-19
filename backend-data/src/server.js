@@ -37,29 +37,8 @@ const LoadList = {
         arg: game,
         time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes + 1, second: mathDayCrerateTime.startTime[0].second },
         gameIdNumber: 1
-      },
-      { name: 'game',
-        arg: game,
-        time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes + 2, second: mathDayCrerateTime.startTime[0].second },
-        gameIdNumber: 2
       }
   ]
-  // timer: [
-  //       { name: 'matchday',
-  //         arg: matchday,
-  //         time: { hour: 14, minute: 7, second: 20 }
-  //       },
-  //       { name: 'game',
-  //         arg: game,
-  //         time: { hour: 14, minute: 7, second: 30 },
-  //         gameIdNumber: 1
-  //       },
-  //       { name: 'game',
-  //         arg: game,
-  //         time: { hour: startTimeobj[0].hours, minute: startTimeobj[0].minutes, second: startTimeobj[0].second },
-  //         gameIdNumber: 2
-  //       }
-  // ]
 }
 LoadList.only.forEach((script) => {
   if (!getName(script.name)) {
@@ -68,12 +47,6 @@ LoadList.only.forEach((script) => {
   }
 })
 LoadList.timer.forEach((script) => {
-  console.log(script.time)
-  createtimerJob(script.arg, script.time, script.gameIdNumber)
+  createtimerJob(script.time, script.arg)
   console.log(`add ${script.name} timer job...`)
 })
-// test data
-// createonlyJob(matchday)
-// setTimeout(() => {
-//   createonlyJob(game)
-// }, 2000)

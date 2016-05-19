@@ -1,68 +1,74 @@
 import Mock from 'mockjs'
 import mysql from '../stores/mysql'
-import { getId, setId } from '../stores/jsondb'
-import { now, setTime } from '../task/date'
-import { initGameWaitStart } from '../game/game'
-import { gameRunTime, mathDayCrerateNuberList } from '../config/config'
+import { getId, setId, getMatchDayLen } from '../stores/jsondb'
+import { now } from '../task/date'
+import { getMatchDayByMatchDayId } from '../model/player'
 const Random = Mock.Random
-const sTime = gameRunTime.startTime
-const eTime = gameRunTime.endTime
+
  //
-const LEN = 1
+let LEN = 0
 const name = 'game'
 // const catgoryLen = mathDayCrerateNuberList
-const generateSql = (gameIdNumber) => {
-  // getId('catgory') + catgoryLen - gameIdNumber - 1,
-  const Game = {
-    id: getId(name),
-    categoryId: 1,
-    hostTeamId: Random.integer(1, Math.floor((getId('team') - 1) / 2)),
-    guestTeamId: Random.integer(Math.floor((getId('team') - 1) / 2) + 1, getId('team') - 1),
-    matchDayId: (getId('matchday') - (mathDayCrerateNuberList.length + 1)) + gameIdNumber,
-    name: '半场赛',
-    startTime: setTime(sTime[gameIdNumber - 1].hours, sTime[gameIdNumber - 1].minutes, sTime[gameIdNumber - 1].second),
-    ext: '',
-    createdTime: now(),
-    updatedTime: now()
-  }
+const generateSql = async () => {
+  LEN = getMatchDayLen('matchday')
+  const matchId = getId('matchday')
+  const matchInfo = await getMatchDayByMatchDayId(matchId - LEN)
   let command = 'INSERT INTO t_game VALUES'
-  let _sql = [
-    `(
-       ${Game.id} ,
-       ${Game.categoryId} ,
-       ${Game.hostTeamId} ,
-       ${Game.guestTeamId},
-       ${Game.matchDayId},
-       '${Game.name}',
-       '${Game.startTime}',
-       '${Game.ext}',
-       '${Game.createdTime}',
-       '${Game.updatedTime}'
-     )`
-  ]
+  let _sql = []
+
+  matchInfo.forEach((matchday, i) => {
+    const Game = {
+      id: getId(name) + i,
+      categoryId: 1,
+      hostTeamId: Random.integer(1, Math.floor((getId('team') - 1) / 2)),
+      guestTeamId: Random.integer(Math.floor((getId('team') - 1) / 2) + 1, getId('team') - 1),
+      matchDayId: matchday.id,
+      name: '半场赛',
+      startTime: now(matchday.startTime),
+      ext: '',
+      createdTime: now(),
+      updatedTime: now()
+    }
+    if (matchday === matchInfo[matchInfo.length - 1]) {
+      _sql.push(`(
+         ${Game.id} ,
+         ${Game.categoryId} ,
+         ${Game.hostTeamId} ,
+         ${Game.guestTeamId},
+         ${Game.matchDayId},
+         '${Game.name}',
+         '${Game.startTime}',
+         '${Game.ext}',
+         '${Game.createdTime}',
+         '${Game.updatedTime}'
+       )`)
+    } else {
+      _sql.push(`(
+         ${Game.id} ,
+         ${Game.categoryId} ,
+         ${Game.hostTeamId} ,
+         ${Game.guestTeamId},
+         ${Game.matchDayId},
+         '${Game.name}',
+         '${Game.startTime}',
+         '${Game.ext}',
+         '${Game.createdTime}',
+         '${Game.updatedTime}'
+       ),`)
+    }
+  })
   let sql = command
   for (let i = 0; i < LEN; i++) {
     sql += _sql[i]
   }
-  console.log(sql, gameIdNumber)
-  return {
-    sql,
-    startinfo: {
-      gameId: Game.id,
-      hostTeamId: Game.hostTeamId,
-      guetsTeamId: Game.guestTeamId,
-      endTime: eTime[gameIdNumber - 1],
-      gameIdNumber: gameIdNumber
-
-    }
-  }
+//  console.log(_sql)
+  return Promise.resolve(sql)
 }
-const exec = async (gameIdNumber) => {
-  let sql = generateSql(gameIdNumber)
-  const startinfo = sql.startinfo
-  await mysql.query(sql.sql)
-  setId({name, id: getId(name) + 1})
-  initGameWaitStart(startinfo.gameId, startinfo.hostTeamId, startinfo.guetsTeamId, startinfo.endTime, startinfo.gameIdNumber)
+const exec = async () => {
+  let sql = await generateSql()
+  console.log(sql)
+  await mysql.query(sql)
+  setId({name, id: getId(name) + LEN})
   return Promise.resolve(true)
 }
 
