@@ -36,7 +36,6 @@ const LoadList = {
       { name: 'game',
         arg: game,
         time: { hour: mathDayCrerateTime.startTime[0].hours, minute: mathDayCrerateTime.startTime[0].minutes + 1, second: mathDayCrerateTime.startTime[0].second },
-        gameIdNumber: 1
       }
   ]
 }
@@ -47,6 +46,8 @@ LoadList.only.forEach((script) => {
   }
 })
 LoadList.timer.forEach((script) => {
-  createtimerJob(script.time, script.arg)
+  createtimerJob(script.arg, script.time)
   console.log(`add ${script.name} timer job...`)
 })
+
+// ,

@@ -26,11 +26,12 @@
     },
     {
       "name": "matchday",
-      "id": 15
+      "id": 19,
+      "len": 4
     },
     {
       "name": "game",
-      "id": 13
+      "id": 17
     }
   ]
 }

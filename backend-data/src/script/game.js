@@ -25,6 +25,8 @@ const generateSql = async () => {
       matchDayId: matchday.id,
       name: '半场赛',
       startTime: now(matchday.startTime),
+      hostTeamScore: null,
+      guestTeamScore: null,
       ext: '',
       createdTime: now(),
       updatedTime: now()
@@ -38,6 +40,8 @@ const generateSql = async () => {
          ${Game.matchDayId},
          '${Game.name}',
          '${Game.startTime}',
+         ${Game.hostTeamScore},
+         ${Game.guestTeamScore},
          '${Game.ext}',
          '${Game.createdTime}',
          '${Game.updatedTime}'
@@ -51,6 +55,8 @@ const generateSql = async () => {
          ${Game.matchDayId},
          '${Game.name}',
          '${Game.startTime}',
+         ${Game.hostTeamScore},
+         ${Game.guestTeamScore},
          '${Game.ext}',
          '${Game.createdTime}',
          '${Game.updatedTime}'

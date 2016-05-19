@@ -1,13 +1,13 @@
 import Mock from 'mockjs'
 import mysql from '../stores/mysql'
-import { getId, setId, setMatchDayLen } from '../stores/jsondb'
+import { getId, setId, setMatchDayLen, getMatchDayLen } from '../stores/jsondb'
 import { nowAddtime } from '../task/date'
 const Random = Mock.Random
  //
 let LEN = 2
 const name = 'matchday'
 const generateSql = () => {
-  if (getId(name) === 1) {
+  if (getMatchDayLen(name) === 0) {
     LEN = 4
   }
   let _sql = []
@@ -16,6 +16,7 @@ const generateSql = () => {
     selectListSub.push(i)
   }
   selectListSub.forEach((id, i) => {
+    //
     const date = [15 * 60 + 30, 20 * 60 + 30, 39 * 60 + 30, 44 * 60 + 30]
     let index = i
     if (LEN === 2) {
