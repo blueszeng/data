@@ -16,7 +16,7 @@ const generateSql = () => {
     selectListSub.push(i)
   }
   selectListSub.forEach((id, i) => {
-    const date = [14 * 60 + 30, 16 * 60 + 30, 38 * 60 + 30, 41 * 60 + 30]
+    const date = [15 * 60 + 30, 20 * 60 + 30, 39 * 60 + 30, 44 * 60 + 30]
     let index = i
     if (LEN === 2) {
       index = i + 2
