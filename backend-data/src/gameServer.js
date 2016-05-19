@@ -54,13 +54,14 @@ const getPlayer = async (TeamId) => {
   return players
 }
 
-const isEqualTime = (oldTime, newTime) => { return oldTime < newTime }
+const isEqualTime = (oldTime, newTime) => { return oldTime === newTime }
 const testStartingLineup = async () => {
   for (let key in gameStartTimeList) {
    // select game
     let value = gameStartTimeList[key]
     const oldTime = Date.parse(new Date(value.startTime)) / 1000 - 60
     const newTime = Date.parse(new Date()) / 1000
+    console.log(oldTime, newTime)
     if (isEqualTime(oldTime, newTime)) {
       const hostPlayer = await getPlayer(value.hostTeamId)
       const guestPlayer = await getPlayer(value.guestTeamId)
@@ -77,7 +78,7 @@ const testStartingLineup = async () => {
     clearTimeFlag.loadflag = []
   }
 
-  await CountdownGame()
+//  await CountdownGame()
 }
 
 const overGame = (playerInfo, gameId) => {
@@ -94,7 +95,7 @@ const CountdownGame = async () => {
     let value = loadGameList[key]
     const oldTime = Date.parse(new Date(value.startTime)) / 1000
     const newTime = Date.now() / 1000
-    const stopGameTimeTamp = Date.parse(new Date()) + 1 * 1000 * 5
+    const stopGameTimeTamp = Date.parse(new Date(value.startTime)) + 115 * 1000 * 60
     // Date.parse(new Date(value.startTime)) + 115 * 1000 * 60
     const stopGameTime = new Date(stopGameTimeTamp)
     if (isEqualTime(oldTime, newTime)) {

@@ -18,9 +18,8 @@ export const nowAddtime = (minutes) => {
   const timestamp = minutes * 60 * 1000
   return formatDate(new Date(Date.now() + timestamp))
 }
-export const setTime = (day, hours, minutes, second) => {
+export const setTime = (hours, minutes, second) => {
   const date = new Date()
-  date.setHours(day)
   date.setHours(hours)
   date.setMinutes(minutes)
   date.setSeconds(second)
